@@ -1,0 +1,2 @@
+# majiang
+MaJiang
