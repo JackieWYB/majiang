@@ -1,0 +1,69 @@
+[
+  { "__type__": "cc.SceneAsset", "scene": { "__id__": 1 } },
+  { "__type__": "cc.Scene", "_name": "GameScene", "children": [ { "__id__": 2 } ], "_globals": { "__id__": 15 } },
+  {
+    "__type__": "cc.Node",
+    "_name": "Canvas",
+    "_parent": { "__id__": 1 },
+    "_children": [ { "__id__": 3 }, { "__id__": 4 }, { "__id__": 5 }, { "__id__": 6 }, { "__id__": 10 }, { "__id__": 13 } ],
+    "_components": [
+      { "__type__": "cc.Canvas", "node": { "__id__": 2 } },
+      { "__type__": "cc.UITransform", "node": { "__id__": 2 }, "_contentSize": { "width": 1080, "height": 1920 } },
+      { "__type__": "Game", "node": { "__id__": 2 } }
+    ]
+  },
+  { "__type__": "cc.Node", "_name": "Camera", "_parent": { "__id__": 2 }, "_components": [ { "__type__": "cc.Camera", "node": { "__id__": 3 }, "_projection": 1, "_orthoHeight": 960, "_clearFlags": 7, "_color": { "r": 30, "g": 80, "b": 50 } } ] },
+  {
+    "__type__": "cc.Node",
+    "_name": "Player0_Bottom",
+    "_parent": { "__id__": 2 },
+    "_pos": { "y": -750 },
+    "_children": [ { "__id__": 41 }, { "__id__": 42 }, { "__id__": 43 } ]
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Player1_TopRight",
+    "_parent": { "__id__": 2 },
+    "_pos": { "x": 400, "y": 300 },
+    "_children": [ { "__id__": 51 }, { "__id__": 52 }, { "__id__": 53 } ]
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Player2_TopLeft",
+    "_parent": { "__id__": 2 },
+    "_pos": { "x": -400, "y": 300 },
+    "_children": [ { "__id__": 61 }, { "__id__": 62 }, { "__id__": 63 } ]
+  },
+  { "__type__": "cc.Node", "_name": "Hand", "_parent": { "__id__": 4 }, "_components": [ { "__type__": "cc.Layout", "_type": 1 } ] },
+  { "__type__": "cc.Node", "_name": "Melds", "_parent": { "__id__": 4 }, "_pos": { "x": 300 }, "_components": [ { "__type__": "cc.Layout", "_type": 1 } ] },
+  { "__type__": "cc.Node", "_name": "Discards", "_parent": { "__id__": 4 }, "_pos": { "y": 200 }, "_components": [ { "__type__": "cc.Layout" } ] },
+  { "__type__": "cc.Node", "_name": "Hand", "_parent": { "__id__": 5 }, "_components": [ { "__type__": "cc.Layout", "_type": 1 } ] },
+  { "__type__": "cc.Node", "_name": "Melds", "_parent": { "__id__": 5 }, "_pos": { "y": -150 }, "_components": [ { "__type__": "cc.Layout", "_type": 2 } ] },
+  { "__type__": "cc.Node", "_name": "Discards", "_parent": { "__id__": 5 }, "_pos": { "x": -200 }, "_components": [ { "__type__": "cc.Layout" } ] },
+  { "__type__": "cc.Node", "_name": "Hand", "_parent": { "__id__": 6 }, "_components": [ { "__type__": "cc.Layout", "_type": 1 } ] },
+  { "__type__": "cc.Node", "_name": "Melds", "_parent": { "__id__": 6 }, "_pos": { "y": -150 }, "_components": [ { "__type__": "cc.Layout", "_type": 2 } ] },
+  { "__type__": "cc.Node", "_name": "Discards", "_parent": { "__id__": 6 }, "_pos": { "x": 200 }, "_components": [ { "__type__": "cc.Layout" } ] },
+  {
+    "__type__": "cc.Node",
+    "_name": "GameInfo",
+    "_parent": { "__id__": 2 },
+    "_pos": { "y": 850 },
+    "_children": [ { "__id__": 11 }, { "__id__": 12 } ],
+    "_components": [ { "__type__": "cc.UITransform", "_contentSize": { "width": 800, "height": 80 } } ]
+  },
+  { "__type__": "cc.Node", "_name": "RemainingTiles", "_parent": { "__id__": 10 }, "_pos": { "x": -200 }, "_components": [ { "__type__": "cc.Label", "_string": "剩余牌: 36" } ] },
+  { "__type__": "cc.Node", "_name": "RoundInfo", "_parent": { "__id__": 10 }, "_pos": { "x": 200 }, "_components": [ { "__type__": "cc.Label", "_string": "第 1 圈 / 第 1 局" } ] },
+  {
+    "__type__": "cc.Node",
+    "_name": "ActionPanel",
+    "_parent": { "__id__": 2 },
+    "_active": false,
+    "_children": [ { "__id__": 141 }, { "__id__": 142 }, { "__id__": 143 }, { "__id__": 144 } ],
+    "_components": [ { "__type__": "cc.UITransform", "_contentSize": { "width": 800, "height": 150 } }, { "__type__": "cc.Layout", "_type": 1, "_spacingX": 20 } ]
+  },
+  { "__type__": "cc.Node", "_name": "PongBtn", "_parent": { "__id__": 13 }, "_components": [ { "__type__": "cc.Button" }, { "__type__": "cc.Label", "_string": "碰" } ], "clickEvents": [ { "target": { "__id__": 2 }, "component": "Game", "handler": "onPongClick" } ] },
+  { "__type__": "cc.Node", "_name": "GangBtn", "_parent": { "__id__": 13 }, "_components": [ { "__type__": "cc.Button" }, { "__type__": "cc.Label", "_string": "杠" } ], "clickEvents": [ { "target": { "__id__": 2 }, "component": "Game", "handler": "onGangClick" } ] },
+  { "__type__": "cc.Node", "_name": "HuBtn", "_parent": { "__id__": 13 }, "_components": [ { "__type__": "cc.Button" }, { "__type__": "cc.Label", "_string": "胡" } ], "clickEvents": [ { "target": { "__id__": 2 }, "component": "Game", "handler": "onHuClick" } ] },
+  { "__type__": "cc.Node", "_name": "PassBtn", "_parent": { "__id__": 13 }, "_components": [ { "__type__": "cc.Button" }, { "__type__": "cc.Label", "_string": "过" } ], "clickEvents": [ { "target": { "__id__": 2 }, "component": "Game", "handler": "onPassClick" } ] },
+  { "__type__": "cc.SceneGlobals", "ambient": {}, "shadows": {}, "skybox": {} }
+]

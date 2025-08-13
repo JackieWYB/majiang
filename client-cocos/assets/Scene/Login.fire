@@ -1,0 +1,103 @@
+[
+  {
+    "__type__": "cc.SceneAsset",
+    "scene": { "__id__": 1 }
+  },
+  {
+    "__type__": "cc.Scene",
+    "_name": "New Scene",
+    "children": [ { "__id__": 2 } ],
+    "_globals": { "__id__": 15 }
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Canvas",
+    "_parent": { "__id__": 1 },
+    "_children": [ { "__id__": 3 }, { "__id__": 4 }, { "__id__": 6 }, { "__id__": 12 } ],
+    "_components": [
+      { "__type__": "cc.Canvas", "node": { "__id__": 2 } },
+      { "__type__": "cc.UITransform", "node": { "__id__": 2 }, "_contentSize": { "width": 1080, "height": 1920 } },
+      { "__type__": "Login", "node": { "__id__": 2 } }
+    ],
+    "_pos": { "x": 540, "y": 960 }
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Camera",
+    "_parent": { "__id__": 2 },
+    "_components": [
+      { "__type__": "cc.Camera", "node": { "__id__": 3 }, "_projection": 1, "_orthoHeight": 960, "_clearFlags": 7, "_color": { "r": 53, "g": 53, "b": 53 } }
+    ]
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Title",
+    "_parent": { "__id__": 2 },
+    "_components": [
+      { "__id__": 5 },
+      { "__type__": "cc.UITransform", "node": { "__id__": 4 }, "_contentSize": { "width": 400, "height": 100 } }
+    ],
+    "_pos": { "y": 400 }
+  },
+  {
+    "__type__": "cc.Label",
+    "node": { "__id__": 4 },
+    "_string": "卡五星麻将",
+    "_fontSize": 80
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "LoginButton",
+    "_parent": { "__id__": 2 },
+    "_children": [ { "__id__": 9 } ],
+    "_components": [
+      { "__type__": "cc.UITransform", "node": { "__id__": 6 }, "_contentSize": { "width": 320, "height": 100 } },
+      { "__type__": "cc.Sprite", "node": { "__id__": 6 }, "_type": 1, "_color": { "r": 28, "g": 180, "b": 57 } },
+      { "__id__": 8 }
+    ]
+  },
+  {
+    "__type__": "cc.Button",
+    "node": { "__id__": 6 },
+    "transition": 2,
+    "zoomScale": 1.1,
+    "clickEvents": [ { "target": { "__id__": 2 }, "component": "Login", "handler": "onLoginClick" } ]
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Label",
+    "_parent": { "__id__": 6 },
+    "_components": [
+      { "__type__": "cc.Label", "node": { "__id__": 9 }, "_string": "微信登录", "_fontSize": 48, "_color": { "r": 255, "g": 255, "b": 255 } },
+      { "__type__": "cc.UITransform", "node": { "__id__": 9 }, "_contentSize": { "width": 320, "height": 100 } }
+    ]
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Agreement",
+    "_parent": { "__id__": 2 },
+    "_pos": { "y": -300 },
+    "_components": [
+      { "__type__": "cc.UITransform", "node": { "__id__": 12 }, "_contentSize": { "width": 500, "height": 50 } },
+      { "__id__": 14 }
+    ]
+  },
+  {
+    "__type__": "cc.Toggle",
+    "node": { "__id__": 12 },
+    "isChecked": true
+  },
+  {
+    "__type__": "cc.Label",
+    "node": { "__id__": 12 },
+    "_string": "我已阅读并同意《用户协议》和《隐私政策》",
+    "_fontSize": 28,
+    "_overflow": 0
+  },
+  {
+    "__type__": "cc.SceneGlobals",
+    "ambient": {},
+    "shadows": {},
+    "skybox": {}
+  }
+]

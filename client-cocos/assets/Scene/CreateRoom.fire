@@ -1,0 +1,80 @@
+[
+  { "__type__": "cc.SceneAsset", "scene": { "__id__": 1 } },
+  { "__type__": "cc.Scene", "_name": "CreateRoomScene", "children": [ { "__id__": 2 } ], "_globals": { "__id__": 18 } },
+  {
+    "__type__": "cc.Node",
+    "_name": "Canvas",
+    "_parent": { "__id__": 1 },
+    "_children": [ { "__id__": 3 }, { "__id__": 4 } ],
+    "_components": [
+      { "__type__": "cc.Canvas", "node": { "__id__": 2 } },
+      { "__type__": "cc.UITransform", "node": { "__id__": 2 }, "_contentSize": { "width": 1080, "height": 1920 } },
+      {
+        "__type__": "CreateRoom",
+        "node": { "__id__": 2 },
+        "roundsToggleContainer": { "__id__": 6 },
+        "sevenPairsToggle": { "__id__": 9 },
+        "selfDrawOnlyToggle": { "__id__": 11 },
+        "maxFanEditBox": { "__id__": 14 }
+      }
+    ]
+  },
+  { "__type__": "cc.Node", "_name": "Camera", "_parent": { "__id__": 2 }, "_components": [ { "__type__": "cc.Camera", "node": { "__id__": 3 }, "_projection": 1, "_orthoHeight": 960, "_clearFlags": 7, "_color": { "r": 53, "g": 53, "b": 53 } } ] },
+  {
+    "__type__": "cc.Node",
+    "_name": "CreateRoomPanel",
+    "_parent": { "__id__": 2 },
+    "_children": [ { "__id__": 5 }, { "__id__": 8 }, { "__id__": 12 }, { "__id__": 15 } ],
+    "_components": [
+      { "__type__": "cc.UITransform", "node": { "__id__": 4 }, "_contentSize": { "width": 900, "height": 1200 } },
+      { "__type__": "cc.Sprite", "node": { "__id__": 4 }, "_type": 1, "_color": { "r": 40, "g": 40, "b": 40 } }
+    ]
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "RoundsSelection",
+    "_parent": { "__id__": 4 },
+    "_pos": { "y": 450 },
+    "_children": [ { "__id__": 7 }, { "__id__": 70 } ],
+    "_components": [
+      { "__type__": "cc.UITransform", "_contentSize": { "width": 800, "height": 100 } },
+      { "__id__": 6 }
+    ]
+  },
+  { "__type__": "cc.ToggleContainer", "node": { "__id__": 5 } },
+  { "__type__": "cc.Node", "_name": "8_rounds_toggle", "_parent": { "__id__": 5 }, "_pos": { "x": -150 }, "_components": [ { "__type__": "cc.Toggle" }, { "__type__": "cc.Label", "_string": "8 局" } ] },
+  { "__type__": "cc.Node", "_name": "16_rounds_toggle", "_parent": { "__id__": 5 }, "_pos": { "x": 150 }, "_components": [ { "__type__": "cc.Toggle" }, { "__type__": "cc.Label", "_string": "16 局" } ] },
+  {
+    "__type__": "cc.Node",
+    "_name": "GameplayOptions",
+    "_parent": { "__id__": 4 },
+    "_pos": { "y": 250 },
+    "_children": [ { "__id__": 9 }, { "__id__": 11 } ],
+    "_components": [ { "__type__": "cc.UITransform", "_contentSize": { "width": 800, "height": 100 } }, { "__type__": "cc.Layout", "_type": 1, "_spacingX": 50 } ]
+  },
+  { "__type__": "cc.Node", "_name": "SevenPairsToggle", "_parent": { "__id__": 8 }, "_components": [ { "__id__": 9 }, { "__type__": "cc.Label", "_string": "可七对" } ] },
+  { "__type__": "cc.Toggle", "node": { "__id__": 9 } },
+  { "__type__": "cc.Node", "_name": "SelfDrawOnlyToggle", "_parent": { "__id__": 8 }, "_components": [ { "__id__": 11 }, { "__type__": "cc.Label", "_string": "只能自摸" } ] },
+  { "__type__": "cc.Toggle", "node": { "__id__": 11 } },
+  {
+    "__type__": "cc.Node",
+    "_name": "ScoringOptions",
+    "_parent": { "__id__": 4 },
+    "_pos": { "y": 50 },
+    "_children": [ { "__id__": 14 } ],
+    "_components": [ { "__type__": "cc.UITransform", "_contentSize": { "width": 800, "height": 100 } } ]
+  },
+  { "__type__": "cc.Node", "_name": "MaxFanEditBox", "_parent": { "__id__": 12 }, "_components": [ { "__id__": 14 }, { "__type__": "cc.Label", "_string": "封顶番数:" }, { "__type__": "cc.Sprite", "_type": 1, "_color": { "r": 20, "g": 20, "b": 20 } } ] },
+  { "__type__": "cc.EditBox", "node": { "__id__": 14 }, "_string": "6" },
+  {
+    "__type__": "cc.Node",
+    "_name": "ActionButtons",
+    "_parent": { "__id__": 4 },
+    "_pos": { "y": -500 },
+    "_children": [ { "__id__": 16 }, { "__id__": 17 } ],
+    "_components": [ { "__type__": "cc.UITransform", "_contentSize": { "width": 800, "height": 100 } }, { "__type__": "cc.Layout", "_type": 1, "_spacingX": 200 } ]
+  },
+  { "__type__": "cc.Node", "_name": "CreateButton", "_parent": { "__id__": 15 }, "_components": [ { "__type__": "cc.Button" }, { "__type__": "cc.Label", "_string": "创建房间" } ], "clickEvents": [ { "target": { "__id__": 2 }, "component": "CreateRoom", "handler": "onCreateButtonClick" } ] },
+  { "__type__": "cc.Node", "_name": "CloseButton", "_parent": { "__id__": 15 }, "_components": [ { "__type__": "cc.Button" }, { "__type__": "cc.Label", "_string": "关闭" } ], "clickEvents": [ { "target": { "__id__": 2 }, "component": "CreateRoom", "handler": "onCloseButtonClick" } ] },
+  { "__type__": "cc.SceneGlobals", "ambient": {}, "shadows": {}, "skybox": {} }
+]
