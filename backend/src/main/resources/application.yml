@@ -1,0 +1,233 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+    name: mahjong-game
+  
+  # Database Configuration
+  datasource:
+    url: jdbc:mysql://localhost:3306/mahjong_game?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&cachePrepStmts=true&useServerPrepStmts=true&prepStmtCacheSize=250&prepStmtCacheSqlLimit=2048&useLocalSessionState=true&useLocalTransactionState=true&rewriteBatchedStatements=true&cacheResultSetMetadata=true&cacheServerConfiguration=true&elideSetAutoCommits=true&maintainTimeStats=false
+    username: ${DB_USERNAME:mahjong}
+    password: ${DB_PASSWORD:mahjong123}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: ${DB_MAX_POOL_SIZE:30}
+      minimum-idle: ${DB_MIN_IDLE:10}
+      idle-timeout: 300000
+      connection-timeout: 20000
+      max-lifetime: 1200000
+      leak-detection-threshold: 60000
+      connection-test-query: SELECT 1
+      pool-name: MahjongGameHikariCP
+      auto-commit: false
+      transaction-isolation: TRANSACTION_READ_COMMITTED
+  
+  # JPA Configuration
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+        use_sql_comments: true
+    open-in-view: false
+  
+  # Redis Configuration
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      database: 0
+      timeout: 2000ms
+      connect-timeout: 2000ms
+      command-timeout: 5000ms
+      lettuce:
+        pool:
+          max-active: ${REDIS_MAX_ACTIVE:50}
+          max-idle: ${REDIS_MAX_IDLE:20}
+          min-idle: ${REDIS_MIN_IDLE:10}
+          max-wait: 2000ms
+          time-between-eviction-runs: 30000ms
+        shutdown-timeout: 100ms
+        cluster:
+          refresh:
+            adaptive: true
+            period: 30s
+  
+  # Flyway Configuration
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    validate-on-migrate: true
+  
+  # Jackson Configuration
+  jackson:
+    default-property-inclusion: non_null
+    time-zone: Asia/Shanghai
+    date-format: yyyy-MM-dd HH:mm:ss
+
+# JWT Configuration
+jwt:
+  secret: ${JWT_SECRET:mahjong-game-secret-key-2024-very-long-and-secure}
+  expiration: 86400000 # 24 hours in milliseconds
+  refresh-expiration: 604800000 # 7 days in milliseconds
+
+# WeChat Configuration
+wechat:
+  mini-program:
+    app-id: ${WECHAT_APP_ID:your-wechat-app-id}
+    app-secret: ${WECHAT_APP_SECRET:your-wechat-app-secret}
+    code2session-url: https://api.weixin.qq.com/sns/jscode2session
+
+# Game Configuration
+game:
+  room:
+    max-inactive-minutes: 30
+    cleanup-interval-minutes: 5
+  turn:
+    default-timeout-seconds: 15
+    action-window-seconds: 2
+  redis:
+    game-state-ttl-hours: 2
+    session-ttl-hours: 24
+
+# Logging Configuration
+logging:
+  level:
+    com.mahjong: DEBUG
+    org.springframework.security: DEBUG
+    org.springframework.web.socket: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: logs/mahjong-game.log
+    max-size: 100MB
+    max-history: 30
+
+# Actuator Configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: always
+      probes:
+        enabled: true
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    distribution:
+      percentiles-histogram:
+        http.server.requests: true
+      percentiles:
+        http.server.requests: 0.5, 0.95, 0.99
+      sla:
+        http.server.requests: 10ms, 50ms, 100ms, 200ms, 500ms
+    tags:
+      application: mahjong-game
+      environment: ${ENVIRONMENT:dev}
+
+# Admin Configuration
+admin:
+  monitoring:
+    health-check-interval-minutes: 5
+    suspicious-activity-threshold: 5
+    audit-log-retention-days: 90
+  security:
+    max-login-attempts: 5
+    lockout-duration-minutes: 30
+    session-timeout-minutes: 60
+
+# Security Configuration
+security:
+  rate-limit:
+    api-requests-per-minute: 100
+    websocket-messages-per-minute: 30
+    login-attempts-per-15-minutes: 5
+    room-creation-per-hour: 10
+  validation:
+    max-nickname-length: 20
+    max-payload-size: 10000
+    enable-xss-protection: true
+    enable-sql-injection-protection: true
+  audit:
+    log-all-requests: true
+    log-security-events: true
+    preserve-game-seeds: true
+    seed-retention-days: 30
+
+---
+# Development Profile
+spring:
+  config:
+    activate:
+      on-profile: dev
+  
+  datasource:
+    url: jdbc:mysql://localhost:3306/mahjong_game_dev?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+  
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+logging:
+  level:
+    root: INFO
+    com.mahjong: DEBUG
+
+---
+# Test Profile
+spring:
+  config:
+    activate:
+      on-profile: test
+  
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 
+  
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.H2Dialect
+  
+  flyway:
+    enabled: false
+
+---
+# Production Profile
+spring:
+  config:
+    activate:
+      on-profile: prod
+  
+  jpa:
+    show-sql: false
+  
+logging:
+  level:
+    root: WARN
+    com.mahjong: INFO
+  file:
+    name: /var/log/mahjong-game/application.log

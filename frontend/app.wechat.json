@@ -1,0 +1,78 @@
+{
+  "pages": [
+    "pages/index/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#2c3e50",
+    "navigationBarTitleText": "卡五星麻将",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#34495e",
+    "enablePullDownRefresh": false
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/icon_home.png",
+        "selectedIconPath": "images/icon_home_selected.png",
+        "text": "首页"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": false,
+  "navigateToMiniProgramAppIdList": [],
+  "permission": {
+    "scope.userInfo": {
+      "desc": "用于获取用户信息，完善游戏体验"
+    },
+    "scope.userLocation": {
+      "desc": "用于匹配附近的玩家"
+    }
+  },
+  "requiredBackgroundModes": [],
+  "plugins": {},
+  "preloadRule": {
+    "pages/index/index": {
+      "network": "all",
+      "packages": ["game-engine"]
+    }
+  },
+  "subpackages": [
+    {
+      "root": "game-engine",
+      "pages": [
+        "pages/game/game",
+        "pages/lobby/lobby",
+        "pages/history/history"
+      ]
+    }
+  ],
+  "workers": "workers",
+  "functionalPages": false,
+  "sitemapLocation": "sitemap.json",
+  "style": "v2",
+  "useExtendedLib": {
+    "weui": true
+  },
+  "entranceDeclare": {
+    "locationMessage": {
+      "path": "pages/index/index",
+      "query": "action=location"
+    }
+  },
+  "darkmode": true,
+  "themeLocation": "theme.json",
+  "lazyCodeLoading": "requiredComponents",
+  "singlePage": {
+    "navigationBarFit": "squeezed"
+  }
+}

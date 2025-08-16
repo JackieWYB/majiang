@@ -1,0 +1,43 @@
+{
+  "name": "mahjong-game-frontend",
+  "version": "1.0.0",
+  "description": "3-player Mahjong online battle game frontend built with Cocos Creator",
+  "main": "main.js",
+  "scripts": {
+    "build": "cocos build --platform wechatgame",
+    "build-web": "cocos build --platform web-mobile",
+    "preview": "cocos preview",
+    "compile": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:unit": "vitest run test/managers test/network test/ui --reporter=verbose",
+    "test:integration": "vitest run test/managers/*.integration.test.ts --reporter=verbose",
+    "test:e2e": "vitest run test/e2e --reporter=verbose",
+    "test:wechat": "vitest run test/wechat --reporter=verbose",
+    "test:wechat:watch": "vitest test/wechat",
+    "test:performance": "vitest run test/performance --reporter=verbose",
+    "test:all": "npm run test:unit && npm run test:integration && npm run test:e2e && npm run test:wechat",
+    "test:ci": "vitest run --coverage --reporter=junit --outputFile=test-results.xml"
+  },
+  "keywords": [
+    "mahjong",
+    "game",
+    "cocos-creator",
+    "wechat-mini-game",
+    "multiplayer"
+  ],
+  "author": "Mahjong Game Team",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.9.0",
+    "@types/node": "^18.0.0",
+    "vitest": "^1.0.0",
+    "@vitest/coverage-v8": "^1.0.0",
+    "jsdom": "^23.0.0"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

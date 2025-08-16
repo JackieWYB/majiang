@@ -1,0 +1,32 @@
+{
+  "excludeScenes": [],
+  "orientation": {
+    "landscapeLeft": true,
+    "landscapeRight": true,
+    "portrait": false,
+    "upsideDown": false
+  },
+  "packageName": "org.cocos2d.mahjong",
+  "startScene": "db://assets/scenes/LoginScene.scene",
+  "title": "Mahjong Game",
+  "webOrientation": "auto",
+  "inlineSpriteFrames": true,
+  "inlineSpriteFrames_native": true,
+  "mergeStartScene": false,
+  "optimizeHotUpdate": false,
+  "md5Cache": true,
+  "nativeRenderer": "AUTO",
+  "platform": "wechatgame",
+  "template": "wechatgame",
+  "buildPath": "build",
+  "debug": false,
+  "sourceMaps": false,
+  "separateEngine": false,
+  "wechatgame": {
+    "appid": "",
+    "orientation": "portrait",
+    "separate-engine": false,
+    "remote-server-root": "",
+    "open-data-context-root": ""
+  }
+}

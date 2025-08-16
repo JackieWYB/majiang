@@ -1,0 +1,93 @@
+# Performance Test Configuration
+spring:
+  application:
+    name: mahjong-game-performance-test
+  
+  # Database Configuration for Performance Testing
+  datasource:
+    url: jdbc:h2:mem:perftest;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 
+    hikari:
+      maximum-pool-size: 100
+      minimum-idle: 20
+      idle-timeout: 300000
+      connection-timeout: 20000
+      max-lifetime: 1200000
+      leak-detection-threshold: 60000
+  
+  # JPA Configuration
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: false
+        jdbc:
+          batch_size: 50
+        order_inserts: true
+        order_updates: true
+        jdbc.batch_versioned_data: true
+  
+  # Redis Configuration for Performance Testing
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      database: 15  # Use separate database for performance tests
+      timeout: 1000ms
+      lettuce:
+        pool:
+          max-active: 200
+          max-idle: 50
+          min-idle: 20
+          max-wait: 1000ms
+  
+  # Flyway disabled for performance tests
+  flyway:
+    enabled: false
+
+# Performance Test Specific Configuration
+performance:
+  test:
+    concurrent-users: 500
+    concurrent-rooms: 100
+    concurrent-websockets: 1000
+    test-duration-minutes: 10
+    redis-operations-per-second: 5000
+    messages-per-connection: 500
+    thread-pool-size: 200
+    operation-delay-ms: 10
+    
+    # Performance thresholds
+    thresholds:
+      max-response-time-ms: 1000
+      min-throughput-ops-per-sec: 100
+      max-error-rate-percent: 5.0
+      max-memory-usage-percent: 80.0
+      max-cpu-usage-percent: 80.0
+
+# Logging Configuration for Performance Tests
+logging:
+  level:
+    root: WARN
+    com.mahjong: INFO
+    com.mahjong.performance: DEBUG
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+
+# Actuator Configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics,prometheus
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    tags:
+      application: mahjong-game-performance-test

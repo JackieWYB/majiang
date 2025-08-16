@@ -1,0 +1,37 @@
+{
+  "start-scene": "db://assets/scenes/LoginScene.scene",
+  "group-list": [
+    "default",
+    "ui",
+    "game",
+    "tiles",
+    "effects"
+  ],
+  "collision-matrix": [
+    [
+      true
+    ]
+  ],
+  "excluded-modules": [],
+  "design-resolution-width": 750,
+  "design-resolution-height": 1334,
+  "fit-width": false,
+  "fit-height": true,
+  "use-project-simulator-setting": false,
+  "simulator-orientation": false,
+  "use-customize-simulator": false,
+  "simulator-resolution": {
+    "width": 375,
+    "height": 667
+  },
+  "facebook": {
+    "appID": "",
+    "audience": {
+      "enable": false
+    },
+    "enable": false,
+    "live": {
+      "enable": false
+    }
+  }
+}

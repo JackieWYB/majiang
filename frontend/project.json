@@ -1,0 +1,15 @@
+{
+  "engine": "3.8.0",
+  "id": "mahjong-game",
+  "name": "Mahjong Game",
+  "version": "1.0.0",
+  "description": "3-player Mahjong online battle game for WeChat Mini Program",
+  "author": "Mahjong Game Team",
+  "main": "main.js",
+  "scripts": {
+    "build": "cocos build",
+    "preview": "cocos preview"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
