@@ -1,6 +1,6 @@
 {
   "name": "mahjong-game-frontend",
-  "version": "1.0.0",
+  "version": "3.7.1",
   "description": "3-player Mahjong online battle game frontend built with Cocos Creator",
   "main": "main.js",
   "scripts": {
@@ -39,5 +39,9 @@
   "dependencies": {},
   "engines": {
     "node": ">=14.0.0"
-  }
+  },
+  "creator": {
+    "version": "3.7.1"
+  },
+  "uuid": "f0c5fa48-4f87-4ac3-80bb-6b27511bce45"
 }
